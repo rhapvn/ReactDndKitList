@@ -1,0 +1,266 @@
+{
+  // IntelliSense を使用して利用可能な属性を学べます。
+  // 既存の属性の説明をホバーして表示します。
+  // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "VehicleMain",
+      "request": "launch",
+      "mainClass": "Exercise11.VehicleMain",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "Vowels",
+      "request": "launch",
+      "mainClass": "Exercise11.Vowels",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "CentredAverage",
+      "request": "launch",
+      "mainClass": "Exercise11.CentredAverage",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "Calculation",
+      "request": "launch",
+      "mainClass": "Exercise10.Calculation",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "RepeatSeparator",
+      "request": "launch",
+      "mainClass": "Exercise10.RepeatSeparator",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "FirstOrLastChar",
+      "request": "launch",
+      "mainClass": "Exercise10.FirstOrLastChar",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "MoreOneEight",
+      "request": "launch",
+      "mainClass": "Exercise9.MoreOneEight",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "CountNumbers",
+      "request": "launch",
+      "mainClass": "Exercise9.CountNumbers",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "DrillProducts",
+      "request": "launch",
+      "mainClass": "Exercise9.DrillProducts",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "FindMin",
+      "request": "launch",
+      "mainClass": "Exercise9.FindMin",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "MainFile",
+      "request": "launch",
+      "mainClass": "MainFile",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "Exercise8",
+      "request": "launch",
+      "mainClass": "Exercise8",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "Number",
+      "request": "launch",
+      "mainClass": "Number",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "Stars",
+      "request": "launch",
+      "mainClass": "Stars",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "Multiples",
+      "request": "launch",
+      "mainClass": "Multiples",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "TestNames",
+      "request": "launch",
+      "mainClass": "week5lecture.TestNames",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "Grades",
+      "request": "launch",
+      "mainClass": "week5lecture.Grades",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "FrogProgram",
+      "request": "launch",
+      "mainClass": "FrogProgram",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "test10",
+      "request": "launch",
+      "mainClass": "test10",
+      "projectName": "Comp8702 Java_56096498"
+    },
+    {
+      "type": "java",
+      "name": "Practice",
+      "request": "launch",
+      "mainClass": "Practice",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "Ticket",
+      "request": "launch",
+      "mainClass": "Ticket",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "Practice4",
+      "request": "launch",
+      "mainClass": "Practice4",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "quizPrac",
+      "request": "launch",
+      "mainClass": "quizPrac",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "test4",
+      "request": "launch",
+      "mainClass": "test4",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "test3",
+      "request": "launch",
+      "mainClass": "test3",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "test2",
+      "request": "launch",
+      "mainClass": "test2",
+      "projectName": "Comp8702 Java_5b1932b6"
+    },
+    {
+      "type": "java",
+      "name": "test",
+      "request": "launch",
+      "mainClass": "test",
+      "projectName": "First_project_94619ad6"
+    },
+    {
+      "type": "java",
+      "name": "Module3Practice",
+      "request": "launch",
+      "mainClass": "Module3Practice",
+      "projectName": "First_project_94619ad6"
+    },
+    {
+      "type": "java",
+      "name": "Launch TwoSum",
+      "request": "launch",
+      "mainClass": "TwoSum",
+      "projectName": "First_project_94619ad6"
+    },
+    {
+      "type": "java",
+      "name": "Launch DialogWindow",
+      "request": "launch",
+      "mainClass": "DialogWindow",
+      "projectName": "First_project_94619ad6"
+    },
+    {
+      "type": "java",
+      "name": "Launch dialogWindow",
+      "request": "launch",
+      "mainClass": "dialogWindow",
+      "projectName": "First_project_94619ad6"
+    },
+    {
+      "type": "java",
+      "name": "Launch Current File",
+      "request": "launch",
+      "mainClass": "${file}"
+    },
+    {
+      "type": "java",
+      "name": "Launch Countdown",
+      "request": "launch",
+      "mainClass": "Countdown",
+      "projectName": "First_project_94619ad6"
+    },
+    {
+      "type": "java",
+      "name": "Launch Linc",
+      "request": "launch",
+      "mainClass": "Linc",
+      "projectName": "First_project_94619ad6"
+    },
+    {
+      "type": "java",
+      "name": "Launch Lincoln",
+      "request": "launch",
+      "mainClass": "Lincoln",
+      "projectName": "First_project_94619ad6"
+    },
+    {
+      "type": "java",
+      "name": "Launch Lincoln2",
+      "request": "launch",
+      "mainClass": "Lincoln2",
+      "projectName": "First_project_94619ad6"
+    },
+    {
+      "type": "java",
+      "name": "Launch NumGuessGame",
+      "request": "launch",
+      "mainClass": "NumGuessGame",
+      "projectName": "First_project_94619ad6"
+    }
+  ]
+}

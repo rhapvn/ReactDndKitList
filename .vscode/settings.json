@@ -1,0 +1,122 @@
+{
+  "editor.stickyScroll.enabled": false,
+  "editor.stickyScroll.maxLineCount": 10,
+  "editor.renderControlCharacters": true,
+  "code-runner.runInTerminal": true,
+  "liveServer.settings.CustomBrowser": "firefox",
+  "liveServer.settings.wait": 10,
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "editor.minimap.enabled": false,
+  "html.format.indentInnerHtml": true,
+  "workbench.tree.renderIndentGuides": "always",
+  "editor.wordWrap": "on",
+  "highlight-matching-tag.styles": {
+    "opening": {
+      "left": {
+        "surround": "#155FFA"
+      },
+      "right": {
+        "surround": "#155FFA"
+      },
+      "name": {
+        "highlight": "rgba(128, 162, 255, 0.3)"
+      }
+    },
+    "closing": {
+      "name": {
+        "highlight": "rgba(128, 162, 255, 0.3)"
+      },
+      "left": {
+        "surround": "#155FFA"
+      },
+      "right": {
+        "surround": "#155FFA"
+      },
+      "full": {
+        "custom": {
+          "dark": {
+            "borderWidth": "0 0 1px 0",
+            "borderColor": "white",
+            "borderStyle": "solid",
+            "borderRadius": "4px",
+            "right": "10px"
+          },
+          "light": {
+            "borderWidth": "0 0 2px 0",
+            "borderColor": "brown",
+            "borderStyle": "solid",
+            "borderRadius": "4px",
+            "right": "10px"
+          }
+        }
+      }
+    }
+  },
+  "editor.bracketPairColorization.enabled": true,
+  "editor.formatOnSave": true,
+  // "editor.guides.highlightActiveIndentation": true,
+  "window.zoomLevel": 2,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "explorer.confirmDragAndDrop": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+  "editor.fontWeight": "800",
+  "editor.minimap.maxColumn": 100,
+  "editor.quickSuggestionsDelay": 50,
+  "workbench.colorTheme": "Default Light+",
+  "workbench.startupEditor": "none",
+  "workbench.colorCustomizations": {
+    "editor.lineHighlightBackground": "#7b82c02d",
+    "editor.lineHighlightBorder": "#4374781f"
+  },
+  "diffEditor.wordWrap": "off",
+  "editor.guides.indentation": true,
+  "editor.inlayHints.enabled": "on",
+  "editor.renderLineHighlight": "gutter",
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.guides.bracketPairsHorizontal": true,
+  "editor.guides.bracketPairs": true,
+  "editor.language.colorizedBracketPairs": [
+    ["def", "end"],
+    ["do", "end"],
+    ["if", "end"],
+    ["unless", "end"],
+    ["case", "end"],
+    ["begin", "end"],
+    ["while", "end"],
+    ["until", "end"],
+    ["for", "end"],
+    ["class", "end"],
+    ["module", "end"],
+    ["[", "]"],
+    ["(", ")"],
+    ["{", "}"]
+  ],
+  "code-runner.executorMap": {
+    "javascript": "node",
+    "php": "C:\\php\\php.exe",
+    "python": "python",
+    "perl": "perl",
+    "ruby": "C:\\Ruby23-x64\\bin\\ruby.exe",
+    "go": "go run",
+    "html": "\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\"",
+    "java": "cd $dir && javac $fileName && java $fileNameWithoutExt"
+  },
+  "livePreview.debugOnExternalPreview": false,
+  "livePreview.openPreviewTarget": "Embedded Preview",
+  "livePreview.autoRefreshPreview": "On Changes to Saved Files",
+  "debug.console.collapseIdenticalLines": false,
+  "debug.terminal.clearBeforeReusing": true,
+  "code-runner.clearPreviousOutput": true,
+  "cSpell.words": ["Avenir", "colour", "fontawesome", "fortawesome"],
+  "cSpell.ignoreRegExpList": ["rarr"],
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "java.jdt.ls.java.home": "C:\\Program Files\\Java\\jdk-19",
+  "java.format.settings.url": "eclipse-formatter.xml"
+}

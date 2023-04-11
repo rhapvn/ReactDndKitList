@@ -1,0 +1,134 @@
+* {
+  border: 1px solid #000;
+}
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  height: auto;
+  width: 100vw;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+#main {
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+  grid-template-rows: 1fr 10fr 1fr;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: column;
+  grid-template-areas:
+    "panelCorner1 panelUpper panelCorner2"
+    "panelLeft whole-seating panelRight"
+    "panelCorner3 panelLower panelCorner4";
+  height: auto;
+  width: 90%;
+}
+.panelUpper {
+  grid-area: panelUpper;
+}
+.panelLeft {
+  grid-area: panelLeft;
+}
+.whole-seating {
+  grid-area: whole-seating;
+}
+.panelRight {
+  grid-area: panelRight;
+}
+.panelLower {
+  grid-area: panelLower;
+}
+.panelCorner1 {
+  grid-area: panelCorner1;
+}
+.panelCorner2 {
+  grid-area: panelCorner2;
+}
+.panelCorner3 {
+  grid-area: panelCorner3;
+}
+.panelCorner4 {
+  grid-area: panelCorner4;
+}
+
+.panel svg,
+.panel div {
+  width: 100%;
+  height: 50%;
+}
+.panelUpper,
+.panelLower {
+  margin: 0;
+  padding: 10px;
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: 1fr;
+  grid-auto-flow: column;
+  height: auto;
+  gap: 10px;
+}
+.panelUpper > .panel,
+.panelLower > .panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10%;
+}
+
+.whole-seating {
+  margin: 0;
+  padding: 10px;
+  background-color: #e0e2f0;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  grid-auto-flow: column;
+  height: auto;
+  gap: 10px;
+  border: 1px solid #000;
+}
+
+.desk {
+  padding: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: calc(90vh / 15);
+  width: min(calc(90vh / 12), calc(90vw / 10));
+  background-color: #f5f5f5;
+  border: 2px solid #38276a;
+  border-radius: 5%;
+}
+
+.desk:hover {
+  background-color: #d1d5ff;
+}
+
+.empty {
+  border: 2px solid #c4bed5;
+}
+
+.desk > div {
+  margin: 0%;
+  padding: 0%;
+}
