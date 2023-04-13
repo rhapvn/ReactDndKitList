@@ -1,6 +1,5 @@
 * {
   border: 1px solid #000;
-  box-sizing: border-box;
 }
 #root {
   display: flex;
@@ -39,10 +38,6 @@ code {
     "panelCorner3 panelLower panelCorner4";
   height: min(90vh, 1080px);
   width: 90vw;
-}
-h1 {
-  font-size: 3rem;
-  font-weight: 800;
 }
 .panelUpper {
   grid-area: panelUpper;
@@ -128,44 +123,23 @@ h1 {
   flex-direction: column;
   padding: 5%;
 }
-.iconSpaceTB,
-.iconSpaceLR {
-  color: #3d487a;
-  cursor: grab;
-}
 
-.slideLeft,
-.slideRight,
-.slideUp,
-.slideDown {
-  color: #4d53ad;
-  -webkit-text-stroke: 2px solid #5852ff;
-  cursor: pointer;
-}
-
-.slideLeft:hover,
-.slideRight:hover,
-.slideUp:hover,
-.slideDown:hover {
-  color: #4f5aef;
-}
-
-.iconSpaceTB,
+.iconSpace,
 .slideUp,
 .slideDown {
   position: absolute;
+  width: 50%;
 
   margin: 0;
   padding: 0;
 }
 .iconSpaceTB {
   height: 50%;
-
   z-index: 1;
 }
 .slideUp,
 .slideDown {
-  height: 85%;
+  height: 70%;
 }
 
 .iconSpaceLR,
@@ -184,35 +158,35 @@ h1 {
 .slideLeft,
 .slideRight {
   width: 50%;
-  height: 80%;
+  height: 70%;
 }
 
 .panelUpper .iconSpaceTB {
   top: 10%;
 }
 .slideUp {
-  bottom: -35%;
+  bottom: -25%;
 }
 
 .panelLower .iconSpaceTB {
   bottom: 10%;
 }
 .slideDown {
-  top: -35%;
+  top: -25%;
 }
 
 .panelLeft .iconSpaceLR {
   left: 10%;
 }
 .slideRight {
-  left: -20%;
+  left: -10%;
 }
 
 .panelRight .iconSpaceLR {
   right: 10%;
 }
 .slideLeft {
-  right: -20%;
+  right: -10%;
 }
 
 .whole-seating {
@@ -255,4 +229,11 @@ h1 {
 .desk > div {
   margin: 0%;
   padding: 0%;
+}
+
+.onClickWraper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  text-align: center;
 }

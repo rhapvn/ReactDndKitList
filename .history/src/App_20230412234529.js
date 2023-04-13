@@ -30,10 +30,7 @@ function App() {
   const slide = (e) => {
     const index = e.currentTarget.getAttribute("index");
     const classes = e.currentTarget.classList;
-    console.log(document.getElementById("id23").getBoundingClientRect()); //実験中
-    console.log(document.getElementById("id23").children[0].innerHTML);
-    console.log(document.getElementById("id24").getBoundingClientRect());
-    console.log(document.getElementById("id24").children[0].innerHTML);
+    console.log(document.getElementById("2-3"));
     const listClone = shuffle(list, index, classes);
     setList(listClone);
   };

@@ -1,5 +1,5 @@
 import "./App.css";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import {
   // arrayMove,
@@ -10,15 +10,8 @@ import { useState } from "react";
 import { SortableItem } from "./SortableItem";
 import { defaultSeating } from "./seating.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCaretUp,
-  faCaretDown,
-  faCaretLeft,
-  faCaretRight,
-  faGrip,
-  faGripVertical,
-} from "@fortawesome/free-solid-svg-icons";
-import { shuffle } from "./shuffle";
+import { faCaretDown, faGrip } from "@fortawesome/free-solid-svg-icons";
+import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
 
 //前後左右を逆にする
 const initial = defaultSeating.reverse().map((arr) => arr.reverse());
@@ -27,50 +20,22 @@ function App() {
   const [list, setList] = useState(initial);
   console.log("list", list);
 
-  const slide = (e) => {
-    const index = e.currentTarget.getAttribute("index");
-    const classes = e.currentTarget.classList;
-    console.log(document.getElementById("id23").getBoundingClientRect()); //実験中
-    console.log(document.getElementById("id23").children[0].innerHTML);
-    console.log(document.getElementById("id24").getBoundingClientRect());
-    console.log(document.getElementById("id24").children[0].innerHTML);
-    const listClone = shuffle(list, index, classes);
-    setList(listClone);
-  };
-
   return (
     <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-      <h1>Seating App</h1>
+      <h3>Seating App</h3>
       <div id='main'>
         <div className='panelCorner1'></div>
         <div className='panelUpper'>
           {Array.from(Array(10).keys()).map((i) => (
             <div className='panel' key={i}>
-              <FontAwesomeIcon icon={faGrip} className='iconSpaceTB' />
-              <FontAwesomeIcon
-                onClick={slide}
-                icon={faCaretUp}
-                className='slideUp'
-                index={i}
-              />
+              <FontAwesomeIcon icon={faGrip} className='iconSpace' />
+              <FontAwesomeIcon icon={faCaretUp} className='slideUp' />
             </div>
           ))}
         </div>
         <div className='panelCorner2'></div>
 
-        <div className='panelLeft'>
-          {Array.from(Array(10).keys()).map((i) => (
-            <div className='panel' key={i}>
-              <FontAwesomeIcon icon={faGripVertical} className='iconSpaceLR' />
-              <FontAwesomeIcon
-                icon={faCaretLeft}
-                className='slideLeft'
-                index={i}
-                onClick={slide}
-              />
-            </div>
-          ))}
-        </div>
+        <div className='panelLeft'></div>
 
         {/* main desk part */}
         <div className='whole-seating' style={{}} align='center'>
@@ -101,30 +66,13 @@ function App() {
             )}
           </SortableContext>
         </div>
-        <div className='panelRight'>
-          {Array.from(Array(10).keys()).map((i) => (
-            <div className='panel' key={i}>
-              <FontAwesomeIcon
-                icon={faCaretRight}
-                className='slideRight'
-                index={i}
-                onClick={slide}
-              />
-              <FontAwesomeIcon icon={faGripVertical} className='iconSpaceLR' />
-            </div>
-          ))}
-        </div>
+        <div className='panelRight'></div>
         <div className='panelCorner3'></div>
         <div className='panelLower'>
           {Array.from(Array(10).keys()).map((i) => (
             <div className='panel' key={i}>
-              <FontAwesomeIcon
-                icon={faCaretDown}
-                className='slideDown'
-                index={i}
-                onClick={slide}
-              />
-              <FontAwesomeIcon icon={faGrip} className='iconSpaceTB' />
+              <FontAwesomeIcon icon={faCaretDown} className='slideDown' />
+              <FontAwesomeIcon icon={faGrip} className='iconSpace' />
             </div>
           ))}
         </div>

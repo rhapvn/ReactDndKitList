@@ -138,9 +138,8 @@ h1 {
 .slideRight,
 .slideUp,
 .slideDown {
-  color: #4d53ad;
+  color: #717af2;
   -webkit-text-stroke: 2px solid #5852ff;
-  cursor: pointer;
 }
 
 .slideLeft:hover,

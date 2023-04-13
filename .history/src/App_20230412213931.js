@@ -1,5 +1,5 @@
 import "./App.css";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import {
   // arrayMove,
@@ -18,7 +18,6 @@ import {
   faGrip,
   faGripVertical,
 } from "@fortawesome/free-solid-svg-icons";
-import { shuffle } from "./shuffle";
 
 //前後左右を逆にする
 const initial = defaultSeating.reverse().map((arr) => arr.reverse());
@@ -29,18 +28,40 @@ function App() {
 
   const slide = (e) => {
     const index = e.currentTarget.getAttribute("index");
-    const classes = e.currentTarget.classList;
-    console.log(document.getElementById("id23").getBoundingClientRect()); //実験中
-    console.log(document.getElementById("id23").children[0].innerHTML);
-    console.log(document.getElementById("id24").getBoundingClientRect());
-    console.log(document.getElementById("id24").children[0].innerHTML);
-    const listClone = shuffle(list, index, classes);
+    const listClone = structuredClone(list);
+    const data = listClone[index];
+    const positiveData = data.filter((item) => item > 0);
+    const rotatedData = [...data];
+    let rotatedPositive = [];
+    console.log("positiveData", positiveData);
+
+    if (e.currentTarget.classList.contains("slideDown") === true) {
+      let temp = positiveData.pop();
+      rotatedPositive = [temp, ...positiveData];
+    } else if (e.currentTarget.classList.contains("slideDown") === true) {
+      let temp = positiveData.shift();
+      rotatedPositive = [...positiveData, temp];
+    }
+
+    console.log("rotatedPositive", rotatedPositive);
+
+    let count = 0;
+    for (let i = 0; i < data.length; i++) {
+      if (data[i] > 0) {
+        rotatedData[i] = rotatedPositive[count];
+        count++;
+      } else {
+        rotatedData[i] = 0;
+      }
+    }
+    listClone[index] = rotatedData;
+    console.log("listClone", listClone);
     setList(listClone);
   };
 
   return (
     <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-      <h1>Seating App</h1>
+      <h3>Seating App</h3>
       <div id='main'>
         <div className='panelCorner1'></div>
         <div className='panelUpper'>
@@ -62,12 +83,7 @@ function App() {
           {Array.from(Array(10).keys()).map((i) => (
             <div className='panel' key={i}>
               <FontAwesomeIcon icon={faGripVertical} className='iconSpaceLR' />
-              <FontAwesomeIcon
-                icon={faCaretLeft}
-                className='slideLeft'
-                index={i}
-                onClick={slide}
-              />
+              <FontAwesomeIcon icon={faCaretLeft} className='slideLeft' />
             </div>
           ))}
         </div>
@@ -104,12 +120,7 @@ function App() {
         <div className='panelRight'>
           {Array.from(Array(10).keys()).map((i) => (
             <div className='panel' key={i}>
-              <FontAwesomeIcon
-                icon={faCaretRight}
-                className='slideRight'
-                index={i}
-                onClick={slide}
-              />
+              <FontAwesomeIcon icon={faCaretRight} className='slideRight' />
               <FontAwesomeIcon icon={faGripVertical} className='iconSpaceLR' />
             </div>
           ))}

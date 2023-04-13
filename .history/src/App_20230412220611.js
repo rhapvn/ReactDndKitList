@@ -1,5 +1,5 @@
 import "./App.css";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import {
   // arrayMove,
@@ -30,17 +30,13 @@ function App() {
   const slide = (e) => {
     const index = e.currentTarget.getAttribute("index");
     const classes = e.currentTarget.classList;
-    console.log(document.getElementById("id23").getBoundingClientRect()); //実験中
-    console.log(document.getElementById("id23").children[0].innerHTML);
-    console.log(document.getElementById("id24").getBoundingClientRect());
-    console.log(document.getElementById("id24").children[0].innerHTML);
     const listClone = shuffle(list, index, classes);
     setList(listClone);
   };
 
   return (
     <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-      <h1>Seating App</h1>
+      <h3>Seating App</h3>
       <div id='main'>
         <div className='panelCorner1'></div>
         <div className='panelUpper'>

@@ -27,7 +27,7 @@ export function SortableItem(props) {
       style={style}
       {...attributes}
       {...listeners}
-      id={"id" + props.index}
+      id={"id" + props.id}
     >
       <div className='m3'>{data[parseInt(props.index)].name}</div>
     </div>
