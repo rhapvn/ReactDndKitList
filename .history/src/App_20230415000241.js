@@ -20,11 +20,7 @@ function App() {
   console.log("list", list);
 
   return (
-    <DndContext
-      collisionDetection={closestCenter}
-      onDragEnd={handleDragEnd}
-      setList={setList}
-    >
+    <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
       <h1>Seating App</h1>
       <div id='mainField'>
         {/* Upper and Left panel */}
