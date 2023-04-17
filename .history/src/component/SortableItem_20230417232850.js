@@ -38,8 +38,6 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
   const handleDragOver = (e) => {
     e.stopPropagation();
     e.preventDefault();
-
-    console.log("over");
     console.log(e.currentTarget);
     e.currenttarget.style.background = "black";
   };

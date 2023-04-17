@@ -1,5 +1,6 @@
 import "./App.css";
 // import "bootstrap/dist/css/bootstrap.min.css";
+import { DndContext, closestCenter } from "@dnd-kit/core";
 import {
   // arrayMove,
   SortableContext,
@@ -9,36 +10,28 @@ import { useState } from "react";
 import { SortableItem } from "./component/SortableItem";
 import { defaultSeating } from "./data/seating.jsx";
 import { Slide } from "./component/Panel4";
+import { handleDragEnd } from "./component/handleDragEnd";
 
 //前後左右を逆にする
 const initial = defaultSeating.reverse().map((arr) => arr.reverse());
 
 function App() {
   const [list, setList] = useState(initial);
-  const [moveData, setMoveData] = useState({ place: "", id: "", x: 0, y: 0 });
-  // console.log("list", list);
+  console.log("list", list);
 
   return (
-    <>
+    <DndContext
+      collisionDetection={closestCenter}
+      onDragEnd={handleDragEnd}
+      setList={setList}
+    >
       <h1>Seating App</h1>
       <div id='mainField' className='max-h-full'>
         {/* Upper and Left panel */}
         <div className='panelCorner1'></div>
-        <Slide
-          setList={setList}
-          list={list}
-          direction='Upper'
-          moveData={moveData}
-          setMoveData={setMoveData}
-        />
+        <Slide setList={setList} list={list} direction='Upper' />
         <div className='panelCorner2'></div>
-        <Slide
-          setList={setList}
-          list={list}
-          direction='Left'
-          moveData={moveData}
-          setMoveData={setMoveData}
-        />
+        <Slide setList={setList} list={list} direction='Left' />
 
         {/* main desk part */}
         <div className='whole-seating' style={{}} align='center'>
@@ -56,8 +49,6 @@ function App() {
                     key={i.toString() + "-" + j.toString()}
                     id={i.toString() + "-" + j.toString()}
                     index={indexJ}
-                    moveData={moveData}
-                    setMoveData={setMoveData}
                   />
                 ) : (
                   <div
@@ -73,24 +64,12 @@ function App() {
         </div>
 
         {/* Right and Down panel */}
-        <Slide
-          setList={setList}
-          list={list}
-          direction='Right'
-          moveData={moveData}
-          setMoveData={setMoveData}
-        />
+        <Slide setList={setList} list={list} direction='Right' />
         <div className='panelCorner3'></div>
-        <Slide
-          setList={setList}
-          list={list}
-          direction='Down'
-          moveData={moveData}
-          setMoveData={setMoveData}
-        />
+        <Slide setList={setList} list={list} direction='Down' />
         <div className='panelCorner4'></div>
       </div>
-    </>
+    </DndContext>
   );
 }
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCaretUp,
@@ -8,13 +8,12 @@ import {
   faGrip,
   faGripVertical,
 } from "@fortawesome/free-solid-svg-icons";
-import { handleStart, handleMouseMove, handleEnd } from "./handleDrags";
 
 import { shuffle } from "./shuffle";
 
-export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
-  const [initial, setInitial] = useState({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
+export const Slide = ({ list, setList, direction }) => {
+  const [initialX, setInitialX] = useState(0);
+  const [initialY, setInitialY] = useState(0);
 
   // console.log(document.getElementById("id23").getBoundingClientRect()); //実験中
   // console.log(document.getElementById("id23").children[0].innerHTML);
@@ -28,25 +27,22 @@ export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
     setList(listClone);
   };
 
-  useEffect(() => {
-    window.addEventListener("mousemove", move);
-    return () => {
-      window.removeEventListener("mousemove", move);
-    };
-  }, [isDragging]);
-
-  useEffect(() => {
-    window.addEventListener("mouseup", () => handleEnd({ setIsDragging }));
-    return () => {
-      window.removeEventListener("mouseup", () => handleEnd({ setIsDragging }));
-    };
-  }, []);
-
-  const start = (e) => {
-    handleStart(e, { initial, setInitial, setMoveData, setIsDragging });
+  const dragStart = (e) => {
+    const index = e.currentTarget.getAttribute("index");
+    const classes = e.currentTarget.classList;
+    setInitialX(e.clientX);
+    setInitialY(e.clientY);
+    console.log("initialX", initialX, "initialY", initialY);
+    console.log("index", index);
+    console.log("classes", classes); //Draggable をグリップにつけて、ここで取得する
   };
-  const move = (e) => {
-    handleMouseMove(e, { initial, isDragging, moveData, setMoveData });
+
+  const mousePosition = (e) => {
+    const movementX = e.clientX - initialX;
+    const movementY = e.clientY - initialY;
+    console.log(e);
+    console.log(e.clientX, e.clientY);
+    console.log("movementX", movementX, "movementY", movementY);
   };
 
   if (direction === "Upper") {
@@ -58,17 +54,11 @@ export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
             key={i}
           >
             <div
-              onDragStart={start}
+              onDragStart={dragStart}
+              onMouseMove={mousePosition}
               index={i}
               draggable='true'
               className='w-1/2 h-1/2 cursor-move'
-              style={
-                moveData.id == i && moveData.place == "panelUpper"
-                  ? {
-                      transform: `translate(${moveData.x}px, 0px)`,
-                    }
-                  : {}
-              }
             >
               <FontAwesomeIcon
                 icon={faGrip}
@@ -99,17 +89,10 @@ export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
               key={i}
             >
               <div
-                onDragStart={start}
+                onDragStart={dragStart}
                 index={i}
                 draggable='true'
                 className='w-1/2 h-1/2 cursor-move'
-                style={
-                  moveData.id == i && moveData.place == "panelLeft"
-                    ? {
-                        transform: `translate(0px, ${moveData.y}px)`,
-                      }
-                    : {}
-                }
               >
                 <FontAwesomeIcon
                   icon={faGripVertical}
@@ -148,17 +131,10 @@ export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
                 />
               </div>
               <div
-                onDragStart={start}
+                onDragStart={dragStart}
                 index={i}
                 draggable='true'
                 className='w-1/2 h-1/2 cursor-move'
-                style={
-                  moveData.id == i && moveData.place == "panelRight"
-                    ? {
-                        transform: `translate(0px, ${moveData.y}px)`,
-                      }
-                    : {}
-                }
               >
                 <FontAwesomeIcon
                   icon={faGripVertical}
@@ -189,17 +165,10 @@ export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
                 />
               </div>
               <div
-                onDragStart={start}
+                onDragStart={dragStart}
                 index={i}
                 draggable='true'
                 className='w-1/2 h-1/2 cursor-move'
-                style={
-                  moveData.id == i && moveData.place == "panelLower"
-                    ? {
-                        transform: `translate(${moveData.x}px, 0px)`,
-                      }
-                    : {}
-                }
               >
                 <FontAwesomeIcon
                   icon={faGrip}

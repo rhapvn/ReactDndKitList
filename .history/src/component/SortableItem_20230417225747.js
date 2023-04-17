@@ -22,9 +22,9 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
   };
 
   useEffect(() => {
-    window.addEventListener("mousemove", move);
+    window.addEventListener("mousemove", moveDesk);
     return () => {
-      window.removeEventListener("mousemove", move);
+      window.removeEventListener("mousemove", moveDesk);
     };
   }, [isDragging]);
 
@@ -35,39 +35,22 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
       window.removeEventListener("mouseup", () => handleEnd({ setIsDragging }));
     };
   }, []);
-  const handleDragOver = (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-
-    console.log("over");
-    console.log(e.currentTarget);
-    e.currenttarget.style.background = "black";
-  };
 
   const start = (e) => {
     handleStart(e, { initial, setInitial, setMoveData, setIsDragging });
   };
-  const move = (e) => {
+  const moveDesk = (e) => {
     handleMouseMove(e, { initial, isDragging, moveData, setMoveData });
   };
 
   return (
     <div
       onDragStart={start}
-      onDragEnter={handleDragOver}
-      onDragLeave={handleDragOver}
-      onDragOver={handleDragOver}
       className='desk'
+      style={style}
       id={id}
       index={index}
       draggable='true'
-      style={
-        moveData.id == id
-          ? {
-              transform: `translate(${moveData.x}px, ${moveData.y}px)`,
-            }
-          : {}
-      }
     >
       <div className='m3'>{data[parseInt(index)].name}</div>
     </div>

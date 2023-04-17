@@ -36,12 +36,8 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
     };
   }, []);
   const handleDragOver = (e) => {
-    e.stopPropagation();
     e.preventDefault();
-
-    console.log("over");
-    console.log(e.currentTarget);
-    e.currenttarget.style.background = "black";
+    e.currenttarget.style.background = "#f4f4f4";
   };
 
   const start = (e) => {
@@ -54,9 +50,7 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
   return (
     <div
       onDragStart={start}
-      onDragEnter={handleDragOver}
-      onDragLeave={handleDragOver}
-      onDragOver={handleDragOver}
+      handleDragOver={handleDragOver}
       className='desk'
       id={id}
       index={index}

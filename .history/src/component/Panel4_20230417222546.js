@@ -29,25 +29,25 @@ export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
   };
 
   useEffect(() => {
-    window.addEventListener("mousemove", move);
+    window.addEventListener("mousemove", handleMouseMove);
     return () => {
-      window.removeEventListener("mousemove", move);
+      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, [isDragging]);
 
   useEffect(() => {
-    window.addEventListener("mouseup", () => handleEnd({ setIsDragging }));
+    window.addEventListener("mouseup", handleEnd);
+
     return () => {
-      window.removeEventListener("mouseup", () => handleEnd({ setIsDragging }));
+      window.removeEventListener("mouseup", handleEnd);
     };
   }, []);
 
-  const start = (e) => {
-    handleStart(e, { initial, setInitial, setMoveData, setIsDragging });
-  };
-  const move = (e) => {
-    handleMouseMove(e, { initial, isDragging, moveData, setMoveData });
-  };
+  const start = (e) =>{
+
+    handleStart(e, { setInitial, setMoveData, setIsDragging })
+  }
+
 
   if (direction === "Upper") {
     return (
@@ -58,7 +58,8 @@ export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
             key={i}
           >
             <div
-              onDragStart={start}
+              onDragStart={
+              }
               index={i}
               draggable='true'
               className='w-1/2 h-1/2 cursor-move'
@@ -99,7 +100,7 @@ export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
               key={i}
             >
               <div
-                onDragStart={start}
+                onDragStart={handleStart}
                 index={i}
                 draggable='true'
                 className='w-1/2 h-1/2 cursor-move'
@@ -148,7 +149,7 @@ export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
                 />
               </div>
               <div
-                onDragStart={start}
+                onDragStart={handleStart}
                 index={i}
                 draggable='true'
                 className='w-1/2 h-1/2 cursor-move'
@@ -189,7 +190,7 @@ export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
                 />
               </div>
               <div
-                onDragStart={start}
+                onDragStart={handleStart}
                 index={i}
                 draggable='true'
                 className='w-1/2 h-1/2 cursor-move'

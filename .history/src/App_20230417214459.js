@@ -1,5 +1,6 @@
 import "./App.css";
 // import "bootstrap/dist/css/bootstrap.min.css";
+import { DndContext, closestCenter } from "@dnd-kit/core";
 import {
   // arrayMove,
   SortableContext,
@@ -9,6 +10,7 @@ import { useState } from "react";
 import { SortableItem } from "./component/SortableItem";
 import { defaultSeating } from "./data/seating.jsx";
 import { Slide } from "./component/Panel4";
+import { handleDragEnd } from "./component/handleDragEnd";
 
 //前後左右を逆にする
 const initial = defaultSeating.reverse().map((arr) => arr.reverse());
@@ -16,7 +18,7 @@ const initial = defaultSeating.reverse().map((arr) => arr.reverse());
 function App() {
   const [list, setList] = useState(initial);
   const [moveData, setMoveData] = useState({ place: "", id: "", x: 0, y: 0 });
-  // console.log("list", list);
+  console.log("list", list);
 
   return (
     <>
@@ -56,8 +58,6 @@ function App() {
                     key={i.toString() + "-" + j.toString()}
                     id={i.toString() + "-" + j.toString()}
                     index={indexJ}
-                    moveData={moveData}
-                    setMoveData={setMoveData}
                   />
                 ) : (
                   <div

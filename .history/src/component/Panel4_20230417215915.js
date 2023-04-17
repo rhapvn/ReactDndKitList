@@ -8,7 +8,6 @@ import {
   faGrip,
   faGripVertical,
 } from "@fortawesome/free-solid-svg-icons";
-import { handleStart, handleMouseMove, handleEnd } from "./handleDrags";
 
 import { shuffle } from "./shuffle";
 
@@ -28,26 +27,66 @@ export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
     setList(listClone);
   };
 
+  const handleStart = (e) => {
+    e.preventDefault();
+    setInitial({ x: e.clientX, y: e.clientY });
+    setMoveData({
+      place: e.currentTarget.parentElement.parentElement.className,
+      id: e.currentTarget.getAttribute("index"),
+      x: 0,
+      y: 0,
+    });
+    console.log("start");
+    console.log(e);
+    console.log(e.clientX, e.clientY);
+    console.log(
+      e.currentTarget.parentElement.parentElement.className,
+      e.currentTarget.getAttribute("index"),
+      initial.x,
+      initial.y
+    );
+    setIsDragging(true);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    setMoveData((prev) => ({
+      place: prev.place,
+      id: prev.id,
+      x: e.clientX - initial.x,
+      y: e.clientY - initial.y,
+    }));
+    console.log("dragging");
+    console.log(
+      "place",
+      moveData.place,
+      "id",
+      moveData.id,
+      e.clientX - initial.x,
+      e.clientY - initial.y
+    );
+  };
+
+  const handleEnd = () => {
+    console.log("end");
+    setIsDragging(false);
+  };
+
   useEffect(() => {
-    window.addEventListener("mousemove", move);
+    window.addEventListener("mousemove", handleMouseMove);
     return () => {
-      window.removeEventListener("mousemove", move);
+      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, [isDragging]);
 
   useEffect(() => {
-    window.addEventListener("mouseup", () => handleEnd({ setIsDragging }));
+    window.addEventListener("mouseup", handleEnd);
+
     return () => {
-      window.removeEventListener("mouseup", () => handleEnd({ setIsDragging }));
+      window.removeEventListener("mouseup", handleEnd);
     };
   }, []);
-
-  const start = (e) => {
-    handleStart(e, { initial, setInitial, setMoveData, setIsDragging });
-  };
-  const move = (e) => {
-    handleMouseMove(e, { initial, isDragging, moveData, setMoveData });
-  };
 
   if (direction === "Upper") {
     return (
@@ -58,7 +97,7 @@ export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
             key={i}
           >
             <div
-              onDragStart={start}
+              onDragStart={handleStart}
               index={i}
               draggable='true'
               className='w-1/2 h-1/2 cursor-move'
@@ -99,7 +138,7 @@ export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
               key={i}
             >
               <div
-                onDragStart={start}
+                onDragStart={handleStart}
                 index={i}
                 draggable='true'
                 className='w-1/2 h-1/2 cursor-move'
@@ -148,7 +187,7 @@ export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
                 />
               </div>
               <div
-                onDragStart={start}
+                onDragStart={handleStart}
                 index={i}
                 draggable='true'
                 className='w-1/2 h-1/2 cursor-move'
@@ -189,7 +228,7 @@ export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
                 />
               </div>
               <div
-                onDragStart={start}
+                onDragStart={handleStart}
                 index={i}
                 draggable='true'
                 className='w-1/2 h-1/2 cursor-move'

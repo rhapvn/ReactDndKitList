@@ -2,9 +2,8 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { data } from "../data/data.jsx";
 import { useEffect, useState } from "react";
-import { handleStart, handleMouseMove, handleEnd } from "./handleDrags";
 
-export function SortableItem({ index, id, moveData, setMoveData }) {
+export function SortableItem({ index, id, moveData }) {
   const [initial, setInitial] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
 
@@ -35,14 +34,6 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
       window.removeEventListener("mouseup", () => handleEnd({ setIsDragging }));
     };
   }, []);
-  const handleDragOver = (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-
-    console.log("over");
-    console.log(e.currentTarget);
-    e.currenttarget.style.background = "black";
-  };
 
   const start = (e) => {
     handleStart(e, { initial, setInitial, setMoveData, setIsDragging });
@@ -54,20 +45,10 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
   return (
     <div
       onDragStart={start}
-      onDragEnter={handleDragOver}
-      onDragLeave={handleDragOver}
-      onDragOver={handleDragOver}
       className='desk'
-      id={id}
-      index={index}
+      style={style}
+      id={"id" + index}
       draggable='true'
-      style={
-        moveData.id == id
-          ? {
-              transform: `translate(${moveData.x}px, ${moveData.y}px)`,
-            }
-          : {}
-      }
     >
       <div className='m3'>{data[parseInt(index)].name}</div>
     </div>

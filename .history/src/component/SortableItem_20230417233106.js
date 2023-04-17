@@ -38,8 +38,6 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
   const handleDragOver = (e) => {
     e.stopPropagation();
     e.preventDefault();
-
-    console.log("over");
     console.log(e.currentTarget);
     e.currenttarget.style.background = "black";
   };
@@ -69,7 +67,14 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
           : {}
       }
     >
-      <div className='m3'>{data[parseInt(index)].name}</div>
+      <div
+        className='m3'
+        onDragEnter={handleDragOver}
+        onDragLeave={handleDragOver}
+        onDragOver={handleDragOver}
+      >
+        {data[parseInt(index)].name}
+      </div>
     </div>
   );
 }

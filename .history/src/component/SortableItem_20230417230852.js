@@ -6,7 +6,7 @@ import { handleStart, handleMouseMove, handleEnd } from "./handleDrags";
 
 export function SortableItem({ index, id, moveData, setMoveData }) {
   const [initial, setInitial] = useState({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
+  const [isDeskDragging, setIsDeskDragging] = useState(false);
 
   const { transform, transition } = useSortable({
     id: index,
@@ -22,41 +22,36 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
   };
 
   useEffect(() => {
-    window.addEventListener("mousemove", move);
+    window.addEventListener("mousemove", moveDesk);
     return () => {
-      window.removeEventListener("mousemove", move);
+      window.removeEventListener("mousemove", moveDesk);
     };
-  }, [isDragging]);
+  }, [isDeskDragging]);
 
   useEffect(() => {
-    window.addEventListener("mouseup", () => handleEnd({ setIsDragging }));
+    window.addEventListener("mouseup", () => handleEnd({ setIsDeskDragging }));
 
     return () => {
-      window.removeEventListener("mouseup", () => handleEnd({ setIsDragging }));
+      window.removeEventListener("mouseup", () =>
+        handleEnd({ setIsDeskDragging })
+      );
     };
   }, []);
   const handleDragOver = (e) => {
-    e.stopPropagation();
     e.preventDefault();
+    e.currenttarget.style.background = "#f4f4f4";
 
-    console.log("over");
-    console.log(e.currentTarget);
-    e.currenttarget.style.background = "black";
-  };
 
   const start = (e) => {
-    handleStart(e, { initial, setInitial, setMoveData, setIsDragging });
+    handleStart(e, { initial, setInitial, setMoveData, setIsDeskDragging });
   };
-  const move = (e) => {
-    handleMouseMove(e, { initial, isDragging, moveData, setMoveData });
+  const moveDesk = (e) => {
+    handleMouseMove(e, { initial, isDeskDragging, moveData, setMoveData });
   };
 
   return (
     <div
       onDragStart={start}
-      onDragEnter={handleDragOver}
-      onDragLeave={handleDragOver}
-      onDragOver={handleDragOver}
       className='desk'
       id={id}
       index={index}

@@ -16,7 +16,7 @@ const initial = defaultSeating.reverse().map((arr) => arr.reverse());
 function App() {
   const [list, setList] = useState(initial);
   const [moveData, setMoveData] = useState({ place: "", id: "", x: 0, y: 0 });
-  // console.log("list", list);
+  console.log("list", list);
 
   return (
     <>

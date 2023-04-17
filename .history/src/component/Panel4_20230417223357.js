@@ -36,9 +36,9 @@ export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
   }, [isDragging]);
 
   useEffect(() => {
-    window.addEventListener("mouseup", () => handleEnd({ setIsDragging }));
+    window.addEventListener("mouseup", handleEnd);
     return () => {
-      window.removeEventListener("mouseup", () => handleEnd({ setIsDragging }));
+      window.removeEventListener("mouseup", handleEnd);
     };
   }, []);
 
@@ -99,7 +99,7 @@ export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
               key={i}
             >
               <div
-                onDragStart={start}
+                onDragStart={handleStart}
                 index={i}
                 draggable='true'
                 className='w-1/2 h-1/2 cursor-move'
@@ -148,7 +148,7 @@ export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
                 />
               </div>
               <div
-                onDragStart={start}
+                onDragStart={handleStart}
                 index={i}
                 draggable='true'
                 className='w-1/2 h-1/2 cursor-move'
@@ -189,7 +189,7 @@ export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
                 />
               </div>
               <div
-                onDragStart={start}
+                onDragStart={handleStart}
                 index={i}
                 draggable='true'
                 className='w-1/2 h-1/2 cursor-move'

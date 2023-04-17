@@ -15,8 +15,9 @@ const initial = defaultSeating.reverse().map((arr) => arr.reverse());
 
 function App() {
   const [list, setList] = useState(initial);
+  const [isDragging, setIsDragging] = useState(false);
   const [moveData, setMoveData] = useState({ place: "", id: "", x: 0, y: 0 });
-  // console.log("list", list);
+  console.log("list", list);
 
   return (
     <>
@@ -56,8 +57,6 @@ function App() {
                     key={i.toString() + "-" + j.toString()}
                     id={i.toString() + "-" + j.toString()}
                     index={indexJ}
-                    moveData={moveData}
-                    setMoveData={setMoveData}
                   />
                 ) : (
                   <div

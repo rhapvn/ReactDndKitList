@@ -42,7 +42,7 @@ code {
     "panelLeft whole-seating panelRight"
     "panelCorner3 panelLower panelCorner4";
   height: min(90vh, 1080px);
-  width: min(90vw, 1250px);
+  width: min(90vw, 1300px);
 }
 h1 {
   font-size: 3rem;

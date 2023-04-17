@@ -38,7 +38,7 @@ export const Slide = ({ list, setList, direction, moveData, setMoveData }) => {
   useEffect(() => {
     window.addEventListener("mouseup", () => handleEnd({ setIsDragging }));
     return () => {
-      window.removeEventListener("mouseup", () => handleEnd({ setIsDragging }));
+      window.removeEventListener("mouseup", handleEnd);
     };
   }, []);
 
