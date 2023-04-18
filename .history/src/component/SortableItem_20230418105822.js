@@ -7,7 +7,6 @@ import { handleStart, handleMouseMove, handleEnd } from "./handleDrags";
 export function SortableItem({ index, id, moveData, setMoveData }) {
   const [initial, setInitial] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
-  const [counter, setCounter] = useState(0);
 
   const { transform, transition } = useSortable({
     id: index,
@@ -23,32 +22,17 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
   };
 
   useEffect(() => {
-    document
-      .getElementById("whole-seating")
-      .addEventListener("mouseover", move);
+    window.addEventListener("mousemove", move);
     return () => {
-      document
-        .getElementById("whole-seating")
-        .removeEventListener("mouseover", move);
+      window.removeEventListener("mousemove", move);
     };
   }, []);
 
   useEffect(() => {
-    window.addEventListener("mouseup", (e) => handleEnd(e, { setIsDragging }));
+    window.addEventListener("mouseup", () => handleEnd({ setIsDragging }));
 
     return () => {
-      window.removeEventListener("mouseup", (e) =>
-        handleEnd(e, { setIsDragging })
-      );
-    };
-  }, []);
-  useEffect(() => {
-    window.addEventListener("mouseup", (e) => handleEnd(e, { setIsDragging }));
-
-    return () => {
-      window.removeEventListener("mouseup", (e) =>
-        handleEnd(e, { setIsDragging })
-      );
+      window.removeEventListener("mouseup", () => handleEnd({ setIsDragging }));
     };
   }, []);
 
@@ -58,7 +42,7 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
 
     console.log("over");
     console.log(e.currentTarget);
-    e.currentTarget.classList.add("over");
+    e.currenttarget.style.border = "1px solid red";
   };
 
   const handleDragEnter = (e) => {
@@ -69,11 +53,10 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
   };
 
   const handleDragLeave = (e) => {
-    setCounter((prev) => prev - 1);
+    e.stopPropagation();
     e.preventDefault();
     console.log("leave");
     console.log(e.currentTarget);
-    e.currentTarget.classList.remove("over");
   };
 
   const handleDrag = (e) => {
@@ -87,13 +70,6 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
   const move = (e) => {
     handleMouseMove(e, { initial, isDragging, moveData, setMoveData });
   };
-  const handleDrop = (e) => {
-    e.preventDefault();
-
-    console.log("drop");
-    console.log(e.currentTarget);
-    e.currentTarget.classList.remove("over");
-  };
 
   return (
     <div
@@ -101,7 +77,7 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
       onDragEnter={handleDragEnter}
       onDragLeave={handleDragLeave}
       onDragOver={handleDragOver}
-      onDrop={handleDrop}
+      onDrag={handleDrag}
       className='desk'
       id={id}
       index={index}

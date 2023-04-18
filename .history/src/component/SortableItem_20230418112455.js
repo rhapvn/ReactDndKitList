@@ -23,32 +23,17 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
   };
 
   useEffect(() => {
-    document
-      .getElementById("whole-seating")
-      .addEventListener("mouseover", move);
+    window.addEventListener("mousemove", move);
     return () => {
-      document
-        .getElementById("whole-seating")
-        .removeEventListener("mouseover", move);
+      window.removeEventListener("mousemove", move);
     };
   }, []);
 
   useEffect(() => {
-    window.addEventListener("mouseup", (e) => handleEnd(e, { setIsDragging }));
+    window.addEventListener("mouseup", () => handleEnd({ setIsDragging }));
 
     return () => {
-      window.removeEventListener("mouseup", (e) =>
-        handleEnd(e, { setIsDragging })
-      );
-    };
-  }, []);
-  useEffect(() => {
-    window.addEventListener("mouseup", (e) => handleEnd(e, { setIsDragging }));
-
-    return () => {
-      window.removeEventListener("mouseup", (e) =>
-        handleEnd(e, { setIsDragging })
-      );
+      window.removeEventListener("mouseup", () => handleEnd({ setIsDragging }));
     };
   }, []);
 
@@ -87,13 +72,6 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
   const move = (e) => {
     handleMouseMove(e, { initial, isDragging, moveData, setMoveData });
   };
-  const handleDrop = (e) => {
-    e.preventDefault();
-
-    console.log("drop");
-    console.log(e.currentTarget);
-    e.currentTarget.classList.remove("over");
-  };
 
   return (
     <div
@@ -101,7 +79,7 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
       onDragEnter={handleDragEnter}
       onDragLeave={handleDragLeave}
       onDragOver={handleDragOver}
-      onDrop={handleDrop}
+      onDrag={handleDrag}
       className='desk'
       id={id}
       index={index}

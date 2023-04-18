@@ -23,13 +23,9 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
   };
 
   useEffect(() => {
-    document
-      .getElementById("whole-seating")
-      .addEventListener("mouseover", move);
+    document.getElementById("whole-seating").addEventListener("mousemove", move);
     return () => {
-      document
-        .getElementById("whole-seating")
-        .removeEventListener("mouseover", move);
+      document.getElementById("whole-seating").("mousemove", move);
     };
   }, []);
 
@@ -43,6 +39,7 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
     };
   }, []);
   useEffect(() => {
+
     window.addEventListener("mouseup", (e) => handleEnd(e, { setIsDragging }));
 
     return () => {
@@ -94,6 +91,7 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
     console.log(e.currentTarget);
     e.currentTarget.classList.remove("over");
   };
+
 
   return (
     <div

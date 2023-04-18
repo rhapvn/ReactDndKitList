@@ -41,12 +41,7 @@ function App() {
         />
 
         {/* main desk part */}
-        <div
-          id='whole-seating'
-          className='whole-seating'
-          style={{}}
-          align='center'
-        >
+        <div className='whole-seating' style={{}} align='center'>
           <SortableContext
             className='container'
             items={list

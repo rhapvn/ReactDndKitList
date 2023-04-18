@@ -24,12 +24,13 @@ export function SortableItem({ index, id, moveData, setMoveData }) {
 
   useEffect(() => {
     document
-      .getElementById("whole-seating")
-      .addEventListener("mouseover", move);
+      .getElementsByClassName("whole-seating")[0]
+      .setEventListener("mousemove", move);
+
     return () => {
       document
-        .getElementById("whole-seating")
-        .removeEventListener("mouseover", move);
+        .getElementsByClassName("whole-seating")
+        .removeEventListener("mousemove", move);
     };
   }, []);
 

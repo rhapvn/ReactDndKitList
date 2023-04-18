@@ -31,8 +31,7 @@ export const handleStart = (
   e,
   { initial, setInitial, setMoveData, setIsDragging }
 ) => {
-  e.dataTransfer.setData("text/plain", e.currentTarget.id);
-  e.dataTransfer.setDragImage(new Image(), 0, 0);
+  e.preventDefault();
   setInitial({ x: e.clientX, y: e.clientY });
   const panels = ["panelUpper", "panelLower", "panelLeft", "panelRight"];
   if (panels.includes(e.currentTarget.parentElement.parentElement.className)) {
@@ -85,8 +84,7 @@ export const handleMouseMove = (
   );
 };
 
-export const handleEnd = (e, { setIsDragging }) => {
+export const handleEnd = ({ setIsDragging }) => {
   console.log("end");
   setIsDragging(false);
-  e.currentTarget.classList.remove("over");
 };

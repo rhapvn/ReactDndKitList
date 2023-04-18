@@ -85,8 +85,7 @@ export const handleMouseMove = (
   );
 };
 
-export const handleEnd = (e, { setIsDragging }) => {
+export const handleEnd = ({ setIsDragging }) => {
   console.log("end");
   setIsDragging(false);
-  e.currentTarget.classList.remove("over");
 };

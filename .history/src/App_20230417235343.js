@@ -18,9 +18,57 @@ function App() {
   const [moveData, setMoveData] = useState({ place: "", id: "", x: 0, y: 0 });
   // console.log("list", list);
 
+  const handleDragOver = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    console.log("over");
+    console.log(e.currentTarget);
+    e.currenttarget.style.background = "black";
+  };
+
+  const handleDragEnter = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    console.log("enter");
+    console.log(e.currentTarget);
+    e.currenttarget.style.background = "black";
+  };
+
+  const handleDragLeave = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    console.log("leave");
+    console.log(e.currentTarget);
+    e.currenttarget.style.background = "white";
+  };
+
+  const handleDrag = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    console.log("drag");
+    console.log(e.currentTarget);
+    e.currenttarget.style.background = "black";
+  };
+
+  const start = (e) => {
+    handleStart(e, { initial, setInitial, setMoveData, setIsDragging });
+  };
+  const move = (e) => {
+    handleMouseMove(e, { initial, isDragging, moveData, setMoveData });
+  };
+
   return (
     <>
-      <h1>Seating App</h1>
+      <h1
+        onDragStart={start}
+        onDragEnter={handleDragEnter}
+        onDragLeave={handleDragLeave}
+        onDragOver={handleDragOver}
+        onDrag={handleDrag}
+      >
+        Seating App
+      </h1>
       <div id='mainField' className='max-h-full'>
         {/* Upper and Left panel */}
         <div className='panelCorner1'></div>
@@ -41,12 +89,7 @@ function App() {
         />
 
         {/* main desk part */}
-        <div
-          id='whole-seating'
-          className='whole-seating'
-          style={{}}
-          align='center'
-        >
+        <div className='whole-seating' style={{}} align='center'>
           <SortableContext
             className='container'
             items={list
